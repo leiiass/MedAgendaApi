@@ -1,5 +1,6 @@
 ﻿using MedAgenda.Dominio.Modelos;
 using MedAgenda.Servicos.Servicos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedAgenda.Api.Controllers
@@ -22,6 +23,20 @@ namespace MedAgenda.Api.Controllers
             return Ok(consultas);
         }
 
+        [HttpGet("por-paciente/{pacienteId}")]
+        public IActionResult ObterPorPaciente(int pacienteId)
+        {
+            var consultas = _consultaServico.ObterPorPaciente(pacienteId);
+            return Ok(consultas);
+        }
+
+        [HttpGet("por-medico/{medicoId}")]
+        public IActionResult ObterPorMedico(int medicoId)
+        {
+            var consultas = _consultaServico.ObterPorMedico(medicoId);
+            return Ok(consultas);
+        }
+
         [HttpGet("{id}")]
         public OkObjectResult ObterPorId(int id)
         {
@@ -29,11 +44,12 @@ namespace MedAgenda.Api.Controllers
             return Ok(consulta);
         }
 
+        [Authorize]
         [HttpPost]
-        public CreatedResult Criar([FromBody] Consulta consulta)
+        public IActionResult Criar([FromBody] Consulta consulta)
         {
             _consultaServico.Criar(consulta);
-            return Created();
+            return CreatedAtAction(nameof(ObterPorId), new { id = consulta.Id }, consulta);
         }
 
         [HttpPut("{id}")]

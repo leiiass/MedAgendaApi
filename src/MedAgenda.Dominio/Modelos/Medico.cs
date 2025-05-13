@@ -9,7 +9,7 @@
         public string Telefone { get; set; }
 
         // Relacionamento
-        public int EspecialidadeId { get; set; }
+        public int? EspecialidadeId { get; set; }
         public Especialidade Especialidade { get; set; }
     }
 }

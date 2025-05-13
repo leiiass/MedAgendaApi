@@ -3,6 +3,7 @@ using System;
 using MedAgenda.Infraestrutura.BancoDeDados;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MedAgenda.Infraestrutura.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20250504183333_AdicionaNovaClasse")]
+    partial class AdicionaNovaClasse
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.4");
@@ -26,9 +29,6 @@ namespace MedAgenda.Infraestrutura.Migrations
                     b.Property<DateTime>("DataHora")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("EspecialidadeId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("MedicoId")
                         .HasColumnType("INTEGER");
 
@@ -40,8 +40,6 @@ namespace MedAgenda.Infraestrutura.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("EspecialidadeId");
 
                     b.HasIndex("MedicoId");
 
@@ -133,39 +131,21 @@ namespace MedAgenda.Infraestrutura.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("MedicoId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Nome")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("PacienteId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Tipo")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Senha")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MedicoId");
-
-                    b.HasIndex("PacienteId");
 
                     b.ToTable("Usuarios");
                 });
 
             modelBuilder.Entity("MedAgenda.Dominio.Modelos.Consulta", b =>
                 {
-                    b.HasOne("MedAgenda.Dominio.Modelos.Especialidade", "Especialidade")
-                        .WithMany()
-                        .HasForeignKey("EspecialidadeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("MedAgenda.Dominio.Modelos.Medico", "Medico")
                         .WithMany()
                         .HasForeignKey("MedicoId")
@@ -177,8 +157,6 @@ namespace MedAgenda.Infraestrutura.Migrations
                         .HasForeignKey("PacienteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Especialidade");
 
                     b.Navigation("Medico");
 
@@ -194,21 +172,6 @@ namespace MedAgenda.Infraestrutura.Migrations
                         .IsRequired();
 
                     b.Navigation("Especialidade");
-                });
-
-            modelBuilder.Entity("MedAgenda.Dominio.Modelos.Usuario", b =>
-                {
-                    b.HasOne("MedAgenda.Dominio.Modelos.Medico", "Medico")
-                        .WithMany()
-                        .HasForeignKey("MedicoId");
-
-                    b.HasOne("MedAgenda.Dominio.Modelos.Paciente", "Paciente")
-                        .WithMany()
-                        .HasForeignKey("PacienteId");
-
-                    b.Navigation("Medico");
-
-                    b.Navigation("Paciente");
                 });
 #pragma warning restore 612, 618
         }

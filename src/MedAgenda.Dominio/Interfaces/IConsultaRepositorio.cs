@@ -9,5 +9,7 @@ namespace MedAgenda.Dominio.Interfaces
         void Criar(Consulta consulta);
         void Editar(int id, Consulta consulta);
         void Remover(int id);
+        List<Consulta> ObterPorPaciente(int pacienteId);
+        List<Consulta> ObterPorMedico(int medicoId);
     }
 }

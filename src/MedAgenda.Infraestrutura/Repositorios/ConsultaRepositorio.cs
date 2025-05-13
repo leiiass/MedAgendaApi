@@ -19,7 +19,24 @@ namespace MedAgenda.Infraestrutura.Repositorios
             return _context.Consultas
                 .Include(c => c.Paciente)
                 .Include(c => c.Medico)
-                    .ThenInclude(m => m.Especialidade)
+                    .Include(m => m.Especialidade)
+                .ToList();
+        }
+
+        public List<Consulta> ObterPorPaciente(int pacienteId)
+        {
+            return _context.Consultas
+                .Include(c => c.Medico)
+                    .Include(m => m.Especialidade)
+                .Where(c => c.PacienteId == pacienteId)
+                .ToList();
+        }
+
+        public List<Consulta> ObterPorMedico(int medicoId)
+        {
+            return _context.Consultas
+                .Include(c => c.Paciente)
+                .Where(c => c.MedicoId == medicoId)
                 .ToList();
         }
 
@@ -28,7 +45,7 @@ namespace MedAgenda.Infraestrutura.Repositorios
             return _context.Consultas
                 .Include(c => c.Paciente)
                 .Include(c => c.Medico)
-                    .ThenInclude(m => m.Especialidade)
+                    .Include(m => m.Especialidade)
                 .FirstOrDefault(c => c.Id == id);
         }
 

@@ -3,6 +3,7 @@ using System;
 using MedAgenda.Infraestrutura.BancoDeDados;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MedAgenda.Infraestrutura.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20250510132848_AdicionarTipoUsuario")]
+    partial class AdicionarTipoUsuario
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.4");
@@ -133,14 +136,8 @@ namespace MedAgenda.Infraestrutura.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("MedicoId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Nome")
                         .HasColumnType("TEXT");
-
-                    b.Property<int?>("PacienteId")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -150,10 +147,6 @@ namespace MedAgenda.Infraestrutura.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MedicoId");
-
-                    b.HasIndex("PacienteId");
 
                     b.ToTable("Usuarios");
                 });
@@ -194,21 +187,6 @@ namespace MedAgenda.Infraestrutura.Migrations
                         .IsRequired();
 
                     b.Navigation("Especialidade");
-                });
-
-            modelBuilder.Entity("MedAgenda.Dominio.Modelos.Usuario", b =>
-                {
-                    b.HasOne("MedAgenda.Dominio.Modelos.Medico", "Medico")
-                        .WithMany()
-                        .HasForeignKey("MedicoId");
-
-                    b.HasOne("MedAgenda.Dominio.Modelos.Paciente", "Paciente")
-                        .WithMany()
-                        .HasForeignKey("PacienteId");
-
-                    b.Navigation("Medico");
-
-                    b.Navigation("Paciente");
                 });
 #pragma warning restore 612, 618
         }

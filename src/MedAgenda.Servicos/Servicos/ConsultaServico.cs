@@ -35,5 +35,15 @@ namespace MedAgenda.Servicos.Servicos
         {
             _consultaRepositorio.Remover(id);
         }
+
+        public List<Consulta> ObterPorPaciente(int pacienteId)
+        {
+            return _consultaRepositorio.ObterPorPaciente(pacienteId);
+        }
+
+        public List<Consulta> ObterPorMedico(int medicoId)
+        {
+            return _consultaRepositorio.ObterPorMedico(medicoId);
+        }
     }
 }

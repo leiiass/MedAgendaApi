@@ -33,7 +33,7 @@ namespace MedAgenda.Api.Controllers
         public CreatedResult Criar([FromBody] Especialidade especialidade)
         {
             _especialidadeServico.Criar(especialidade);
-            return Created();
+            return Created("", especialidade.Id);
         }
 
         [HttpPut("{id}")]
