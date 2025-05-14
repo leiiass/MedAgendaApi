@@ -2,7 +2,7 @@
 **MedAgendaApi** é uma API RESTful desenvolvida como parte do backend da aplicação MedAgenda. O projeto foi construído em **C#** com **.NET 8**, utilizando **Entity Framework Core (EF Core)** como ORM e adotando os princípios da **Onion Architecture** para promover desacoplamento e organização do código.
 ---
 
-### Video da apresentação do projeto
+### 🎬 Video da apresentação do projeto
 - [Apresentação do projeto](https://drive.google.com/file/d/1zCVifnTDqTuPjPHXvCwBrk5iSBmy432P/view?usp=sharing)
 
 ### 👩‍💻👨‍💻 Desenvolvedores do Grupo 13
