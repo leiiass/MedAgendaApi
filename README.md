@@ -49,27 +49,6 @@ Utilizamos o **SQLite**, um banco leve e embutido ideal para testes e aplicaçõ
 
 ---
 
-## 🚀 Como Executar o Projeto Localmente
-
-### Pré-requisitos
-
-- [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
-- Editor como Visual Studio, VS Code ou Rider
-
-### Passos para rodar
-
-```bash
-# Clone o repositório
-git clone https://github.com/seu-usuario/MedAgendaApi.git
-
-# Acesse a pasta principal da API
-cd MedAgendaApi/src/MedAgenda.Api
-
-# Restaure os pacotes
-dotnet restore
-
-# Execute o projeto
-dotnet run
 
 
 
