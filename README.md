@@ -46,6 +46,7 @@ Utilizamos o **SQLite**, um banco leve e embutido ideal para testes e aplicaçõ
 
 - As migrations são gerenciadas com **Entity Framework Core**.
 - Arquivos `.db`, `.db-shm` e `.db-wal` são gerados automaticamente ao rodar a aplicação.
+  
 
 ---
 
