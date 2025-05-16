@@ -57,6 +57,9 @@ Utilizamos o **SQLite**, um banco leve e embutido ideal para testes e aplicaçõ
 - [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 - Editor como Visual Studio, VS Code ou Rider
 
+  
+---
+
 ### Passos para rodar
 
 ```bash
